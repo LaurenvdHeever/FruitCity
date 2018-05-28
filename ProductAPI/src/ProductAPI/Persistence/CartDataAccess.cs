@@ -61,30 +61,7 @@ namespace ProductAPI.Persistence
 
 				var totalItemPrice = Calculate.CalculateTotalItemPrice(special, product.Price, quantity);
 
-				////Is there a special and does it apply
-				//if (special != null && quantity >= special.SpecialQuantity)
-				//{
-				//	//check how many items fall within the special price and how many within the standard price
-				//	var standardPriceQuantity = quantity % special.SpecialQuantity;
-				//	var specialPriceQuantity = quantity / special.SpecialQuantity;
-
-				//	//calculate the special price
-				//	var totalSpecialPrice = specialPriceQuantity * special.SpecialPrice;
-
-				//	//calculate the standard price
-				//	var totalStandardPrice = standardPriceQuantity * product.Price;					
-
-				//	//calculate the total price for all items
-				//	totalItemPrice = totalSpecialPrice + totalStandardPrice;
-				//}
-				////there is no special, but we still need to calculate the total item price.
-				//else
-				//{
-				//	totalItemPrice = quantity * product.Price;
-				//}
-
-				var discount = Calculate.CalculateDiscount (totalItemPrice, product.Price, quantity);
-				//var discount = (product.Price * quantity) - totalItemPrice;
+				var discount = Calculate.CalculateDiscount (totalItemPrice, product.Price, quantity);			
 
 				//update the cart
 				await connection.ExecuteAsync(string.Format(DbProcedures.CommandUpdateCart, quantity, discount, totalItemPrice, productId), commandType: CommandType.Text, commandTimeout: _dbQueryTimeoutInSeconds).ConfigureAwait(false);
