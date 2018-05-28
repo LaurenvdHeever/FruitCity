@@ -16,20 +16,20 @@
            </div>         
           </div>          
          </div>                                  
-        <div class="col-sm-15" v-if="details.special" :key="details.special">         
+        <div class="col-sm-15" v-if="details.special" :key="details.specialQuantity">         
          <div class="panel-heading">
           <h2> Current Special </h2>
           <h4> {{ details.special.specialText}} </h4>
         </div>           
         </div>        
-        <div class="col-sm-15" v-if="details.restriction" :key="details.restriction">         
+        <div class="col-sm-15" v-if="details.restriction" :key="details.restrictionQuantity">         
          <div class="panel-heading">
           <h2> We're Sorry </h2>
           <h4> {{ details.restriction.restrictionText}} </h4>
          </div>           
         </div>
           <div>
-          <a href="img"><img :src="'/static/img/' + details.product.productId + '.png'" class="img-responsive" style="width:20%" alt="Image"></a>	   
+          <a href="img"><img :src="getImage(details.product.productId)" class="img-responsive" style="width:20%" alt="Image"></a>        
         </div>
     </div>          
   </div>
@@ -40,7 +40,12 @@
 
 <script>
 export default {
- props: ['details']
+ props: ['details'],
+  methods: {
+    getImage (productId) {
+	    return require("../assets/" + productId + ".png");
+    }
+  }
 }
 </script>
 

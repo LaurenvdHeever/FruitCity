@@ -7,7 +7,7 @@
 	</app-productdetails>
 	<div class="row">
 		<div class="col-sm-3" style="width: 16em; margin:80px; 50px" v-for="product in products" :key="product.productId">
-			<a href="img"><img :src="'/static/img/' + product.productId + '.png'" class="img-responsive" style="width:50em" alt="Image"></a>				
+			<a href="img"><img :src="getImage(product.productId)" class="img-responsive" style="width:50em" alt="Image"></a>						
 			<div class="panel-heading">
 				<h1> {{ product.name}} </h1>
 				<h4> {{ product.description}} </h4>
@@ -42,8 +42,8 @@ export default {
 		products: [],
 		details: [],
 		showModal: false,
-		showAddToCart: false
-	  }
+		showAddToCart: false		
+		}
   },  
   created () {
 	this.getProducts(config.API.getProducts);
@@ -73,6 +73,10 @@ export default {
 	  closeModal ()
 	  {
 	 		this.showModal = false;
+	  },
+		getImage (productId)
+	  {
+	 		 return require("../assets/" + productId + ".png");
 	  }
 	}
 }
