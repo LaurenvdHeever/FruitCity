@@ -1,0 +1,17 @@
+/build
+.vs/
+/src/packages
+[Bb]in/
+[Oo]bj/
+*.user
+*.bin
+*.VC
+/BuildLogs
+/Config
+/dist
+/logs
+/tools
+*.db
+*.opendb
+*.opensdf
+*.sdf

@@ -1,0 +1,18 @@
+This repo consists of two projects:
+
+	1. ProductAPI:
+		An ASP.NET Web API written in MS Visual Studio 2017.
+		The Product API creates a SQL Lite Database file on start up which is used as the data store that the API persists.
+
+	2. ProductUI:
+		A web client written with Vue.js in MS Visual Studio Code.		
+		Commands to run: npm install, npm start
+	
+
+To have the two run together you will need to configure the client to call the API endpoint:
+
+	1. Run the Web API on your local machine.
+	2. Configure the client to call your local API by updating the API configuration:
+		2.1 Locate the config.js file within ProductUI/src
+		2.2 Within the function, update var URL ='http://localhost:50152/' value, to your local running Web API. Do not change any other API URLs.
+	3. Run the client, on load this should display a products page with a list of products. (FYI - your config worked :))
